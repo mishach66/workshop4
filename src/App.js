@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Users from './Users';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super ()
+
+    this.state = {
+      showUsersList: true
+    }
+
+    this.showHideUsersList = this.showHideUsersList.bind(this)
+  }
+
+  showHideUsersList() {
+    this.setState({showUsersList: !this.state.showUsersList})
+  }
+  
+  render() {
+    const showUsersList = this.state.showUsersList
+    return (
+      <div>
+        <br/>
+        {console.log('showUsersList is ', showUsersList)}
+        <button style={{marginLeft: 20}} onClick={this.showHideUsersList}>Hide / Show Users</button>
+        <div>{showUsersList}</div>
+        <br/>
+        <Users showUsersList={showUsersList} />
+      </div>
+    )
+  }
 }
 
 export default App;
