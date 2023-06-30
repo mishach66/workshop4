@@ -21,6 +21,10 @@ class Users extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        document.title = 'Unmount happaned'
+    }
+
     render() {
         return (
             <div>
